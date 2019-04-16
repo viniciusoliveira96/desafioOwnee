@@ -2,7 +2,14 @@
 
 <h1>Filmes</h1>
 
-<table>
+<%= form_tag filmes_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Buscar", :name => nil %>
+      </p>
+  <% end %>
+
+<table class="table">
   <thead>
     <tr>
       <th>Nome</th>
@@ -18,9 +25,9 @@
         <td><%= filme.nome %></td>
         <td><%= filme.genero %></td>
         <td><%= filme.preco %></td>
-        <td><%= link_to 'Show', filme %></td>
-        <td><%= link_to 'Edit', edit_filme_path(filme) %></td>
-        <td><%= link_to 'Destroy', filme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', filme %></td>
+        <td><%= link_to 'Editar', edit_filme_path(filme) %></td>
+        <td><%= link_to 'Excluir', filme, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Filme', new_filme_path %>
+<%= link_to 'Cadastrar novo filme', new_filme_path %>
